@@ -12,12 +12,12 @@
   $memtotal = round($mem[1] / 1000000,2);
   $memused = round($mem[2] / 1000000,2);
   $memfree = round($mem[3] / 1000000,2);
+  $memshared = round($mem[4] / 1000000,2);
+  $memcached = round($mem[5] / 1000000,2);
+  $memavailable = round($mem[6] / 1000000,2);
 
-  $memshared = round($mem[5] / 1000000,2);
-  $memcached = round($mem[6] / 1000000,2);
-
-  $memusage = round(($memused - $memcached)/$memtotal*100,2);
-
+  $memusage = round(($memavailable/$memtotal)*100,2);
+  
   $connections = `netstat -ntu | grep :80 | grep ESTABLISHED | grep -v LISTEN | awk '{print $5}' | cut -d: -f1 | sort | uniq -c | sort -rn | grep -v 127.0.0.1 | wc -l`; 
   $totalconnections = `netstat -ntu | grep :80 | grep -v LISTEN | awk '{print $5}' | cut -d: -f1 | sort | uniq -c | sort -rn | grep -v 127.0.0.1 | wc -l`; 
 
@@ -93,6 +93,7 @@ hr {  border: 0; height: 1px; background-image: linear-gradient(to right, rgba(0
     <p><span class="description">RAM Used:</span> <span class="result"><?php echo $memused; ?> GB</span></p>
     <p><span class="description">RAM Shared:</span> <span class="result"><?php echo $memshared; ?> GB</span></p>
     <p><span class="description">RAM Cached:</span> <span class="result"><?php echo $memcached; ?> GB</span></p>
+    <p><span class="description">RAM Available:</span> <span class="result"><?php echo $memavailable; ?> GB</span></p>
     <hr>
     <p><span class="description">Hard Disk Free:</span> <span class="result"><?php echo $diskfree; ?> GB</span></p>
     <p><span class="description">Hard Disk Used:</span> <span class="result"><?php echo $diskused; ?> GB</span></p>
