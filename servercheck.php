@@ -23,7 +23,7 @@
 		$memused = round($memtotal-$memavailable,2);
 		// WIN CONNECTIONS
 		$connections = shell_exec('netstat -nt | findstr :80 | findstr ESTABLISHED | find /C /V ""'); 
-		$totalconnections = shell_exec('netstat -nt | findstr :80 | find /C /V ""'); 
+		$totalconnections = shell_exec('netstat -nt | findstr :80 | find /C /V ""');
 	} else {
 		// Linux CPU
 		$load = sys_getloadavg();
