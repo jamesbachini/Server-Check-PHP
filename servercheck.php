@@ -82,6 +82,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>ServerCheck</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<style>
 	html {
 		background: #FFF;
@@ -173,10 +174,12 @@
 			<p><span class="description">⏱️ Load Time: </span> <span class="result"><?php echo $total_time; ?> sec</span></p>
 		</div>
 	</div>
-	<div class="footer">
-		<a href="https://github.com/jamesbachini/Server-Check-PHP">Server Check PHP</a> v <?php echo $server_check_version; ?> | 
-		Built by <a href="https://jamesbachini.com">James Bachini</a> | <a href="?json=1">JSON</a> | 🌙 <a href="javascript:void(0)" onclick="toggleDarkMode();">Dark Mode</a>
-	</div>
+	<footer>
+		<div class="footer">
+			<a href="https://github.com/jamesbachini/Server-Check-PHP">Server Check PHP</a> v <?php echo $server_check_version; ?> | 
+			Built by <a href="https://jamesbachini.com">James Bachini</a> | <a href="?json=1">JSON</a> | 🌙 <a href="javascript:void(0)" onclick="toggleDarkMode();">Dark Mode</a>
+		</div>
+	</footer>
 <script>
 	const toggleDarkMode = () => {
 		if (localStorage.getItem('darkMode') && localStorage.getItem('darkMode') === 'true') {
