@@ -28,6 +28,7 @@
 		// Linux CPU
 		$load = sys_getloadavg();
 		$cpuload = $load[0];
+		$cpu_count = shell_exec('nproc');
 		// Linux MEM
 		$free = shell_exec('free');
 		$free = (string)trim($free);
@@ -156,6 +157,8 @@
 		<p><span class="description">💽 Hard Disk Usage: </span> <span class="result"><?php echo $diskusage; ?>%</span></p>
 		<p><span class="description">🖧 Established Connections: </span> <span class="result"><?php echo $connections; ?></span></p>
 		<p><span class="description">🖧 Total Connections: </span> <span class="result"><?php echo $totalconnections; ?></span></p>
+		<hr>
+		<p><span class="description">🖥️ CPU Threads:</span> <span class="result"><?php echo $cpu_count; ?></span></p>
 		<hr>
 		<p><span class="description">🌡️ RAM Total:</span> <span class="result"><?php echo $memtotal; ?> GB</span></p>
 		<p><span class="description">🌡️ RAM Used:</span> <span class="result"><?php echo $memused; ?> GB</span></p>
