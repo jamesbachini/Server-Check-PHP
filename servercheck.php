@@ -47,8 +47,8 @@
 		$totalconnections = `netstat -ntu | grep :80 | grep -v LISTEN | awk '{print $5}' | cut -d: -f1 | sort | uniq -c | sort -rn | grep -v 127.0.0.1 | wc -l`; 
 	}
 
-	$memusage = round(($memavailable/$memtotal)*100);
-
+	//$memusage = round(($memavailable/$memtotal)*100);
+	$memusage = round(($memused/$memtotal)*100);		
 
 
 	$phpload = round(memory_get_usage() / 1000000,2);
