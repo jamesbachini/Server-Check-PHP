@@ -22,8 +22,8 @@
 		$memavailable = round($mem->FreePhysicalMemory / 1000000,2);
 		$memused = round($memtotal-$memavailable,2);
 		// WIN CONNECTIONS
-		$connections = shell_exec('netstat -nt | findstr :80 | findstr ESTABLISHED | find /C /V ""'); 
-		$totalconnections = shell_exec('netstat -nt | findstr :80 | find /C /V ""');
+		$connections = shell_exec('netstat -nt | findstr :' . $_SERVER['SERVER_PORT'] . ' | findstr ESTABLISHED | find /C /V ""');
+		$totalconnections = shell_exec('netstat -nt | findstr :' . $_SERVER['SERVER_PORT'] . ' | find /C /V ""');
 	} else {
 		// Linux CPU
 		$load = sys_getloadavg();
@@ -43,8 +43,8 @@
 		$memcached = round($mem[5] / 1000000,2);
 		$memavailable = round($mem[6] / 1000000,2);
 		// Linux Connections
-		$connections = `netstat -ntu | grep :80 | grep ESTABLISHED | grep -v LISTEN | awk '{print $5}' | cut -d: -f1 | sort | uniq -c | sort -rn | grep -v 127.0.0.1 | wc -l`; 
-		$totalconnections = `netstat -ntu | grep :80 | grep -v LISTEN | awk '{print $5}' | cut -d: -f1 | sort | uniq -c | sort -rn | grep -v 127.0.0.1 | wc -l`; 
+		$connections = `netstat -ntu | grep -E ':80 |443 ' | grep ESTABLISHED | grep -v LISTEN | awk '{print $5}' | cut -d: -f1 | sort | uniq -c | sort -rn | grep -v 127.0.0.1 | wc -l`; 
+		$totalconnections = `netstat -ntu | grep -E ':80 |443 ' | grep -v LISTEN | awk '{print $5}' | cut -d: -f1 | sort | uniq -c | sort -rn | grep -v 127.0.0.1 | wc -l`; 
 	}
 
 	//$memusage = round(($memavailable/$memtotal)*100);
